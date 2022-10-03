@@ -4,7 +4,8 @@ import 'package:real_estate_brokers/api/Environment.dart';
 import 'package:real_estate_brokers/colors/MyColors.dart';
 
 class SQFTRanger extends StatefulWidget {
-  const SQFTRanger({Key? key}) : super(key: key);
+  final Color colorPrimary;
+  const SQFTRanger({Key? key, required this.colorPrimary}) : super(key: key);
 
   @override
   State<SQFTRanger> createState() => _SQFTRangerState();
@@ -75,7 +76,7 @@ class _SQFTRangerState extends State<SQFTRanger> {
                   inactiveTrackBarHeight: 5,
                   activeTrackBar: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: MyColors.colorPrimary,
+                    color: widget.colorPrimary,
                   ),
                   inactiveTrackBar: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -85,7 +86,7 @@ class _SQFTRangerState extends State<SQFTRanger> {
 
                 min: 0,
                 fontSize: 15,
-                textBackgroundColor: MyColors.colorPrimary,
+                textBackgroundColor: widget.colorPrimary,
                 onDragging: (handlerIndex, lowerValue, upperValue) {
                   this.lowerValue = lowerValue;
                   this.upperValue = upperValue;

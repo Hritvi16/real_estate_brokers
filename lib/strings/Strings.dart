@@ -1,4 +1,6 @@
 class Strings {
+  static String details = "DETAILS";
+  static String amenities = "AMENITIES";
   static String nonCommercial = "NON COMMERCIAL";
   static String commercial = "COMMERCIAL";
   static String buy = "Buy";
@@ -9,4 +11,5 @@ class Strings {
   static String un = "Unfurnished";
   static String app = "Approved";
   static String unapp = "Unapproved";
+  static String lead_desc = "Once you add deal, you can schedule followup and share deals to increase your Sales";
 }

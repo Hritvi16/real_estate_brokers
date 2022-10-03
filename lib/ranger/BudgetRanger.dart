@@ -6,7 +6,8 @@ import 'package:real_estate_brokers/toast/Toast.dart';
 
 class BudgetRanger extends StatefulWidget {
   final String looking;
-  const BudgetRanger({Key? key, required this.looking}) : super(key: key);
+  final Color colorPrimary;
+  const BudgetRanger({Key? key, required this.looking, required this.colorPrimary}) : super(key: key);
 
   @override
   State<BudgetRanger> createState() => _BudgetRangerState();
@@ -77,7 +78,7 @@ class _BudgetRangerState extends State<BudgetRanger> {
                   inactiveTrackBarHeight: 5,
                   activeTrackBar: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: MyColors.colorPrimary,
+                    color: widget.colorPrimary,
                   ),
                   inactiveTrackBar: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -87,7 +88,7 @@ class _BudgetRangerState extends State<BudgetRanger> {
 
                 min: 0,
                 fontSize: 15,
-                textBackgroundColor: MyColors.colorPrimary,
+                textBackgroundColor: widget.colorPrimary,
                 onDragging: (handlerIndex, lowerValue, upperValue) {
                   this.lowerValue = lowerValue;
                   this.upperValue = upperValue;

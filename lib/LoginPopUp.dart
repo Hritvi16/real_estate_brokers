@@ -4,7 +4,8 @@ import 'colors/MyColors.dart';
 
 class LoginPopUp extends StatelessWidget {
   final String text, btn1, btn2;
-  const LoginPopUp({Key? key, required this.text, required this.btn1, required this.btn2}) : super(key: key);
+  final Color colorPrimary;
+  const LoginPopUp({Key? key, required this.text, required this.btn1, required this.btn2, required this.colorPrimary}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class LoginPopUp extends StatelessWidget {
                     },
                     child: Text(btn1,
                       style: TextStyle(
-                          color: MyColors.colorPrimary
+                          color: colorPrimary
                       ),
                     )
                 ),
@@ -41,7 +42,7 @@ class LoginPopUp extends StatelessWidget {
                     },
                     child: Text(btn2,
                       style: TextStyle(
-                          color: MyColors.colorPrimary
+                          color: colorPrimary
                       ),
                     )
                 ),

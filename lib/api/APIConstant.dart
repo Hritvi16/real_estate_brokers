@@ -4,6 +4,13 @@ class APIConstant {
   static String insertUserFCM = "insertUserFCM.php";
   static String manageBrokers = "manage-brokers.php";
   static String manageProperties = "manage-properties.php";
+  static String manageFilters = "manage-filters.php";
+  static String manageStatus = "manage-status.php";
+  static String manageFollowUp = "manage-followup.php";
+  static String manageDeal = "manage-deal.php";
+  static String manageLeadSources = "manage-lead-sources.php";
+  static String manageLeads = "manage-leads.php";
+  static String manageDashboard = "manage-dashboard.php";
   static String manageCategories = "manage-categories.php";
   static String manageCities = "manage-cities.php";
   static String manageAreas = "manage-areas.php";
@@ -23,12 +30,14 @@ class APIConstant {
   static String type = "type";
 
   static String getByBroker = "FETCHBYBROKER";
+  static String getByWishlist = "FETCHBYWISHLIST";
   static String getByID = "FETCHBYID";
   static String getByINID = "FETCHBYINID";
   static String getByPID = "FETCHBYPID";
   static String getByPAID = "FETCHBYPAID";
   static String getByAID = "FETCHBYAID";
   static String getByBID = "FETCHBYBID";
+  static String getByStatus = "FETCHBYSTATUS";
   static String getByCID = "FETCHBYCID";
   static String getBySID = "FETCHBYSID";
   static String getByName = "FETCHBYNAME";
@@ -65,7 +74,10 @@ class APIConstant {
   static String login = "login";
   static String del = "DEL";
   static String update = "update";
-  static String delete = "DEL";
+  static String updateWishlist = "UPDATEWISHLIST";
+  static String updateStatus = "UPDATESTATUS";
+  static String delete = "DELETE";
+  static String assign = "ASSIGN";
   static String verify = "verify";
   static String search = "SEARCH";
   static String getBySearch = "FETCHBYSEARCH";

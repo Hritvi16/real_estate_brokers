@@ -3,16 +3,18 @@ import 'package:range_slider_flutter/range_slider_flutter.dart';
 import 'package:real_estate_brokers/api/Environment.dart';
 import 'package:real_estate_brokers/colors/MyColors.dart';
 
-class FloorDialog extends StatefulWidget {
-  const FloorDialog({Key? key}) : super(key: key);
+class TextDialog extends StatefulWidget {
+  final String label;
+  final Color colorPrimary;
+  const TextDialog({Key? key, required this.label, required this.colorPrimary}) : super(key: key);
 
   @override
-  State<FloorDialog> createState() => _FloorDialogState();
+  State<TextDialog> createState() => _TextDialogState();
 }
 
-class _FloorDialogState extends State<FloorDialog> {
+class _TextDialogState extends State<TextDialog> {
 
-  TextEditingController floor = TextEditingController();
+  TextEditingController name = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +27,13 @@ class _FloorDialogState extends State<FloorDialog> {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFormField(
-                controller: floor,
+                controller: name,
+                cursorColor: widget.colorPrimary,
                 decoration: InputDecoration(
-                  labelText: "Floor",
+                  labelText: widget.label,
+                  labelStyle: TextStyle(
+                      color: widget.colorPrimary
+                  )
                 ),
               ),
               const SizedBox(
@@ -35,10 +41,13 @@ class _FloorDialogState extends State<FloorDialog> {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context, floor.text);
+                  Navigator.pop(context, name.text);
                 },
-                child: const Text(
-                  "ADD"
+                child: Text(
+                  "ADD",
+                  style: TextStyle(
+                    color: widget.colorPrimary
+                  ),
                 )
               )
             ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:real_estate_brokers/HomeScreen.dart';
 import 'package:real_estate_brokers/api/APIConstant.dart';
 import 'package:real_estate_brokers/api/APIService.dart';
@@ -10,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'size/MySize.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({Key? key,}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();
@@ -126,6 +127,8 @@ class _LoginState extends State<Login> {
     if(loginResponse.status=="Success" && loginResponse.message=="Logged In") {
 
       sharedPreferences.setString("id", loginResponse.broker?.id??"");
+      sharedPreferences?.setString("color", loginResponse.broker?.color??"58835d");
+      sharedPreferences?.setString("logo", loginResponse.broker?.logo??"");
       sharedPreferences.setString("username", loginResponse.broker?.username??"");
       sharedPreferences.setString("company", loginResponse.broker?.companyName??"");
       sharedPreferences.setString("logo", loginResponse.broker?.logo??"");
@@ -135,7 +138,7 @@ class _LoginState extends State<Login> {
       print("hello login");
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-              builder: (BuildContext context) => const HomeScreen()),
+              builder: (BuildContext context) => HomeScreen()),
               (Route<dynamic> route) => false);
       // Navigator.of(context).push(
       //     MaterialPageRoute(
@@ -143,7 +146,6 @@ class _LoginState extends State<Login> {
       //     OTPScreen(id: loginResponse.account?.id??"", name: loginResponse.account?.name??"", mobile: mobile.text)));
     }
     else {
-
       Toast.sendToast(context, loginResponse.message??"");
     }
   }

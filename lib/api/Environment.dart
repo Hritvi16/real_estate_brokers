@@ -10,6 +10,7 @@ class Environment {
   static String brochure = "brochure/";
   static String proof = "proof/";
   static String icon = "icons/";
+  static String amenities = "amenities/";
   static String notification = "notification/";
   static String admin = "admin/";
   static String propertyUrl = url1 + assets + property;
@@ -18,6 +19,7 @@ class Environment {
   static String proofUrl = url1 + assets + proof;
   static String notificationUrl = url1 + assets + notification;
   static String iconUrl = url1 + api1 + icon;
+  static String amenitiesUrl = url1 + assets + amenities;
   static String rupee = "₹";
 
 /* static String url = "http://192.168.73.1:8000/apis/";

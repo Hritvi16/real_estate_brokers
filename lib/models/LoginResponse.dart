@@ -33,8 +33,9 @@ class LoginResponse {
 class Broker {
   Broker({
       String? id, 
-      String? username, 
-      String? password, 
+      String? name,
+      String? username,
+      String? password,
       String? status, 
       String? companyName, 
       String? logo, 
@@ -43,17 +44,20 @@ class Broker {
       String? address, 
       String? mobile, 
       String? email, 
-      String? officeNumber1, 
+      String? website1,
+      String? website2,
+      String? officeNumber1,
       String? officeNumber2, 
-      String? city, 
+      String? cityID,
       String? state, 
-      String? area, 
+      String? areaID,
       String? pincode, 
       String? rate, 
       String? createdAt,});
 
   Broker.fromJson(dynamic json) {
     id = json['id'];
+    name = json['name'];
     username = json['username'];
     password = json['password'];
     status = json['status'];
@@ -64,16 +68,19 @@ class Broker {
     address = json['address'];
     mobile = json['mobile'];
     email = json['email'];
+    website1 = json['website1'];
+    website2 = json['website2'];
     officeNumber1 = json['office_number_1'];
     officeNumber2 = json['office_number_2'];
-    city = json['city'];
+    cityID = json['CityID'];
     state = json['state'];
-    area = json['area'];
+    areaID = json['AreaID'];
     pincode = json['pincode'];
     rate = json['rate'];
     createdAt = json['created_at'];
   }
   String? id;
+  String? name;
   String? username;
   String? password;
   String? status;
@@ -84,11 +91,13 @@ class Broker {
   String? address;
   String? mobile;
   String? email;
+  String? website1;
+  String? website2;
   String? officeNumber1;
   String? officeNumber2;
-  String? city;
+  String? cityID;
   String? state;
-  String? area;
+  String? areaID;
   String? pincode;
   String? rate;
   String? createdAt;
@@ -96,6 +105,7 @@ class Broker {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
+    map['name'] = name;
     map['username'] = username;
     map['password'] = password;
     map['status'] = status;
@@ -106,11 +116,13 @@ class Broker {
     map['address'] = address;
     map['mobile'] = mobile;
     map['email'] = email;
+    map['website1'] = website1;
+    map['website2'] = website2;
     map['office_number_1'] = officeNumber1;
     map['office_number_2'] = officeNumber2;
-    map['city'] = city;
+    map['CityID'] = cityID;
     map['state'] = state;
-    map['area'] = area;
+    map['AreaID'] = areaID;
     map['pincode'] = pincode;
     map['rate'] = rate;
     map['created_at'] = createdAt;

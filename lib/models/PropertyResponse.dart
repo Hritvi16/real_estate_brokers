@@ -1,8 +1,11 @@
-/// property : [{"ID":"2","Type":"Seller","TxnDate":"2021-05-21","Broker":"1","CustomerID":"30","CategoryID":"4","Purpose":"Sale","BrokerType":"Owner","BrokerID":"29","sqft":"1225","Rate":"35.51","bhk":"2","Var":"","Vigha":"","Area":"7","SubArea":"8","City":"2347","Size":"","Number":"","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Furnished","Floor":null,"Condition":"","Remarks":"100 % EHITE PAYMENT FULLY VASTU","Project":"5","status":"1"},{"ID":"3","Type":"Seller","TxnDate":"2021-05-21","Broker":"1","CustomerID":"30","CategoryID":"7","Purpose":"Sale","BrokerType":"Reference","BrokerID":"31","sqft":"595","Rate":"20","bhk":"2","Var":"","Vigha":"","Area":"5","SubArea":"9","City":"2347","Size":"","Number":"","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Non-Furnished","Floor":"1","Condition":"ATTACHED TOLIET","Remarks":"","Project":"6","status":"1"},{"ID":"4","Type":"Seller","TxnDate":"2021-05-21","Broker":"1","CustomerID":"30","CategoryID":"4","Purpose":"Rent","BrokerType":"Owner","BrokerID":"31","sqft":"2250","Rate":"","bhk":"3","Var":"","Vigha":"","Area":"3","SubArea":"10","City":"2347","Size":"","Number":"","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Non-Furnished","Floor":"2","Condition":"KTLF","Remarks":"","Project":"7","status":"1"},{"ID":"5","Type":"Seller","TxnDate":"2022-01-07","Broker":"1","CustomerID":"32","CategoryID":"5","Purpose":"Sale","BrokerType":"Owner","BrokerID":null,"sqft":"190","Rate":"35","bhk":"2","Var":"","Vigha":"","Area":"18","SubArea":"11","City":"2347","Size":"9.5*20","Number":"","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Furnished","Floor":"3","Condition":"","Remarks":"","Project":"8","status":"1"},{"ID":"6","Type":"Seller","TxnDate":"2022-01-07","Broker":"1","CustomerID":"30","CategoryID":"4","Purpose":"Sale","BrokerType":"Owner","BrokerID":"33","sqft":"3600","Rate":"209","bhk":"4","Var":"","Vigha":"","Area":"4","SubArea":"12","City":"2347","Size":"","Number":"","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Non-Furnished","Floor":"4","Condition":"","Remarks":"","Project":"9","status":"1"},{"ID":"7","Type":"Seller","TxnDate":"2022-01-07","Broker":"1","CustomerID":"30","CategoryID":"4","Purpose":"Sale","BrokerType":"Owner","BrokerID":"34","sqft":"2155","Rate":"97","bhk":"3","Var":"","Vigha":"","Area":"8","SubArea":"13","City":"2347","Size":"","Number":"","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Non-Furnished","Floor":null,"Condition":"","Remarks":"","Project":"10","status":"1"},{"ID":"8","Type":"Seller","TxnDate":"2022-01-07","Broker":"1","CustomerID":"30","CategoryID":"4","Purpose":"Sale","BrokerType":"Owner","BrokerID":"34","sqft":"1956","Rate":"90","bhk":"3","Var":"","Vigha":"","Area":"8","SubArea":"14","City":"2347","Size":"","Number":"","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Non-Furnished","Floor":"5","Condition":"","Remarks":"","Project":"11","status":"1"},{"ID":"9","Type":"Seller","TxnDate":"2022-01-09","Broker":"1","CustomerID":"30","CategoryID":"6","Purpose":"Sale","BrokerType":"Owner","BrokerID":"35","sqft":"","Rate":"120","bhk":"2","Var":"","Vigha":"","Area":"20","SubArea":"15","City":"2347","Size":"","Number":"10","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Furnished","Floor":null,"Condition":"","Remarks":"10 PLOTS *  12","Project":"12","status":"1"},{"ID":"10","Type":"Seller","TxnDate":"2022-01-07","Broker":"1","CustomerID":"30","CategoryID":"4","Purpose":"Rent","BrokerType":"Owner","BrokerID":"34","sqft":"","Rate":"","bhk":"3","Var":"","Vigha":"","Area":"21","SubArea":"16","City":"2347","Size":"","Number":"","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Furnished","Floor":null,"Condition":"","Remarks":"","Project":"13","status":"1"},{"ID":"11","Type":"Seller","TxnDate":"2022-01-07","Broker":"1","CustomerID":"30","CategoryID":"4","Purpose":"Rent","BrokerType":"Owner","BrokerID":"34","sqft":"","Rate":"","bhk":"3","Var":"","Vigha":"","Area":"8","SubArea":"17","City":"2347","Size":"","Number":"","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Furnished","Floor":null,"Condition":"","Remarks":"","Project":"14","status":"1"},{"ID":"12","Type":"Buyer","TxnDate":"2022-01-10","Broker":"1","CustomerID":"30","CategoryID":"4","Purpose":"Rent","BrokerType":"Owner","BrokerID":"37","sqft":"","Rate":"","bhk":"2","Var":"","Vigha":"","Area":"5","SubArea":null,"City":"2347","Size":"","Number":"","BlockNumber":"","TPSurveyNo":"","Village":"","FurnishedOrNot":"Furnished","Floor":null,"Condition":"","Remarks":"REQUIED FLAT ON RENT 2/3 BHK ALTHAN","Project":null,"status":"1"}]
+import 'package:real_estate_brokers/models/AmenityResponse.dart';
+import 'package:real_estate_brokers/models/CategoryResponse.dart' as c;
 
 class PropertyListResponse {
   PropertyListResponse({
-      List<Property>? property,});
+      List<Property>? property,
+      List<c.Category>? category,
+  });
 
   PropertyListResponse.fromJson(dynamic json) {
     if (json['property'] != null) {
@@ -11,13 +14,23 @@ class PropertyListResponse {
         property?.add(Property.fromJson(v));
       });
     }
+    if (json['category'] != null) {
+      category = [];
+      json['category'].forEach((v) {
+        category?.add(c.Category.fromJson(v));
+      });
+    }
   }
   List<Property>? property;
+  List<c.Category>? category;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (property != null) {
       map['property'] = property?.map((v) => v.toJson()).toList();
+    }
+    if (category != null) {
+      map['category'] = category?.map((v) => v.toJson()).toList();
     }
     return map;
   }
@@ -26,16 +39,21 @@ class PropertyListResponse {
 
 class PropertyResponse {
   PropertyResponse({
-      Property? property,});
+      Property? property,
+      c.Category? category,
+  });
 
   PropertyResponse.fromJson(dynamic json) {
     property = json['property'] != null ? Property.fromJson(json['property']) : Property();
+    category = json['category'] != null ? c.Category.fromJson(json['category']) : c.Category();
   }
   Property? property;
+  c.Category? category;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['property'] = property?.toJson();
+    map['category'] = category?.toJson();
     return map;
   }
 
@@ -43,10 +61,13 @@ class PropertyResponse {
 
 class Property {
   Property({
-      Details? details,
-      List<Images>? images,});
+    Details? details,
+    List<Images>? images,
+    List<Amenity>? amenities,});
 
   Property.fromJson(dynamic json) {
+    print(json['details']);
+    print(json['amenity']);
     details = json['details']!=null ? Details.fromJson(json['details']) : Details();
     if (json['images'] != null) {
       images = [];
@@ -54,16 +75,26 @@ class Property {
         images?.add(Images.fromJson(v));
       });
     }
+    if (json['amenities'] != null) {
+      amenities = [];
+      json['amenities'].forEach((v) {
+        amenities?.add(Amenity.fromJson(v));
+      });
+    }
   }
 
   Details? details;
   List<Images>? images;
+  List<Amenity>? amenities;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['details'] = details?.toJson();
     if (images != null) {
       map['images'] = images?.map((v) => v.toJson()).toList();
+    }
+    if (amenities != null) {
+      map['amenities'] = amenities?.map((v) => v.toJson()).toList();
     }
     return map;
   }
@@ -96,35 +127,6 @@ class Images {
 
 }
 
-/// ID : "2"
-/// Type : "Seller"
-/// TxnDate : "2021-05-21"
-/// Broker : "1"
-/// CustomerID : "30"
-/// CategoryID : "4"
-/// Purpose : "Sale"
-/// BrokerType : "Owner"
-/// BrokerID : "29"
-/// sqft : "1225"
-/// Rate : "35.51"
-/// bhk : "2"
-/// Var : ""
-/// Vigha : ""
-/// Area : "7"
-/// SubArea : "8"
-/// City : "2347"
-/// Size : ""
-/// Number : ""
-/// BlockNumber : ""
-/// TPSurveyNo : ""
-/// Village : ""
-/// FurnishedOrNot : "Furnished"
-/// Floor : null
-/// Condition : ""
-/// Remarks : "100 % EHITE PAYMENT FULLY VASTU"
-/// Project : "5"
-/// status : "1"
-
 class Details {
   Details({
     String? id,
@@ -138,6 +140,7 @@ class Details {
     String? sqftSuper,
     String? sqftCarpet,
     String? rate,
+    String? amount,
     String? bhk,
     String? varr,
     String? vigha,
@@ -155,6 +158,7 @@ class Details {
     String? remarks,
     String? project,
     String? construction,
+    String? possessionDate,
     String? saleType,
     String? brochure,
     String? rera,
@@ -162,6 +166,7 @@ class Details {
     String? projectName,
     String? areaName,
     String? categoryName,
+    String? wishlist,
   }){
     id = id;
     txnDate = txnDate;
@@ -174,6 +179,7 @@ class Details {
     sqftSuper = sqftSuper;
     sqftCarpet = sqftCarpet;
     rate = rate;
+    amount = amount;
     bhk = bhk;
     varr = varr;
     vigha = vigha;
@@ -191,6 +197,7 @@ class Details {
     remarks = remarks;
     project = project;
     construction = construction;
+    possessionDate = possessionDate;
     saleType = saleType;
     brochure = brochure;
     rera = rera;
@@ -198,6 +205,7 @@ class Details {
     projectName = projectName;
     areaName = areaName;
     categoryName = categoryName;
+    wishlist = wishlist;
   }
 
   Details.fromJson(dynamic json) {
@@ -212,6 +220,7 @@ class Details {
     sqftSuper = json['sqft_super'];
     sqftCarpet = json['sqft_carpet'];
     rate = json['Rate'];
+    amount = json['Amount'];
     bhk = json['bhk'];
     varr = json['Var'];
     vigha = json['Vigha'];
@@ -229,6 +238,7 @@ class Details {
     remarks = json['Remarks'];
     project = json['Project'];
     construction = json['construction'];
+    possessionDate = json['possession_date'];
     saleType = json['sale_type'];
     brochure = json['brochure'];
     rera = json['rera'];
@@ -236,6 +246,7 @@ class Details {
     projectName = json['project_name'];
     areaName = json['area_name'];
     categoryName = json['category_name'];
+    wishlist = json['wishlist'];
   }
   String? id;
   String? txnDate;
@@ -248,6 +259,7 @@ class Details {
   String? sqftSuper;
   String? sqftCarpet;
   String? rate;
+  String? amount;
   String? bhk;
   String? varr;
   String? vigha;
@@ -265,6 +277,7 @@ class Details {
   String? remarks;
   String? project;
   String? construction;
+  String? possessionDate;
   String? saleType;
   String? brochure;
   String? rera;
@@ -272,6 +285,7 @@ class Details {
   String? projectName;
   String? areaName;
   String? categoryName;
+  String? wishlist;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -286,6 +300,7 @@ class Details {
     map['sqft_super'] = sqftSuper;
     map['sqft_carpet'] = sqftCarpet;
     map['Rate'] = rate;
+    map['Amount'] = amount;
     map['bhk'] = bhk;
     map['Var'] = varr;
     map['Vigha'] = vigha;
@@ -303,6 +318,7 @@ class Details {
     map['Remarks'] = remarks;
     map['Project'] = project;
     map['construction'] = construction;
+    map['possession_date'] = possessionDate;
     map['sale_type'] = saleType;
     map['brochure'] = brochure;
     map['rera'] = rera;
@@ -310,6 +326,7 @@ class Details {
     map['project_name'] = projectName;
     map['area_name'] = areaName;
     map['category_name'] = categoryName;
+    map['wishlist'] = wishlist;
     return map;
   }
 

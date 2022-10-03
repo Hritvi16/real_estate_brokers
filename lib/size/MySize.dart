@@ -444,6 +444,12 @@ class MySize {
   static sizeh70(BuildContext context) {
     return MediaQuery.of(context).size.height * 0.7;
   }
+  static size75(BuildContext context) {
+    return MediaQuery.of(context).size.width * 0.75;
+  }
+  static sizeh75(BuildContext context) {
+    return MediaQuery.of(context).size.height * 0.75;
+  }
   static size80(BuildContext context) {
     return MediaQuery.of(context).size.width * 0.8;
   }

@@ -7,7 +7,8 @@ import 'package:real_estate_brokers/models/PropertyResponse.dart';
 
 class PhotoView extends StatefulWidget {
   final List<Images> images;
-  const PhotoView({Key? key, required this.images}) : super(key: key);
+  final List<String> image;
+  const PhotoView({Key? key, required this.images, required this.image}) : super(key: key);
 
   @override
   _PhotoViewState createState() => _PhotoViewState();
@@ -15,9 +16,11 @@ class PhotoView extends StatefulWidget {
 
 class _PhotoViewState extends State<PhotoView> {
   late List<Images> images;
+  late List<String> image;
   @override
   void initState() {
     images = widget.images;
+    image = widget.image;
     super.initState();
   }
   @override
@@ -27,13 +30,13 @@ class _PhotoViewState extends State<PhotoView> {
       builder: (BuildContext context, int index) {
         return PhotoViewGalleryPageOptions(
           imageProvider: NetworkImage(
-            Environment.propertyUrl + (images?[index].image ?? "")
+            images.isNotEmpty ? Environment.propertyUrl + (images?[index].image ?? "") : image[index]
           ),
           initialScale: PhotoViewComputedScale.contained * 0.8,
-          heroAttributes: PhotoViewHeroAttributes(tag: images[index]),
+          heroAttributes: PhotoViewHeroAttributes(tag: images.isNotEmpty ? images[index] : image[index]),
         );
       },
-      itemCount: images.length,
+      itemCount: images.isNotEmpty ? images.length : image.length,
       loadingBuilder: (context, event) => Center(
         child: Container(
           width: 20.0,

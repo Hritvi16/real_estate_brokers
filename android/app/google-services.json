@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "296353218081",
+    "project_id": "real-estate-brokers-3054c",
+    "storage_bucket": "real-estate-brokers-3054c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296353218081:android:c4a7071f31efd5d8ca6d60",
+        "android_client_info": {
+          "package_name": "com.ss.real_estate_brokers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296353218081-j0slasbvqtrhbge71kan8a6gir6gh8ut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ss.real_estate_brokers",
+            "certificate_hash": "c77a599012dd3ea8db5bc5f32f2953006f0b3866"
+          }
+        },
+        {
+          "client_id": "296353218081-covqg4fqrga358te00leqolftoan5m9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAICBjW2QFiz-nuFtFuRxm704fuN-Y3M3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296353218081-covqg4fqrga358te00leqolftoan5m9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

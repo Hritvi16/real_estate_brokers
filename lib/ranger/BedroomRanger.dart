@@ -4,7 +4,8 @@ import 'package:real_estate_brokers/api/Environment.dart';
 import 'package:real_estate_brokers/colors/MyColors.dart';
 
 class BedroomRanger extends StatefulWidget {
-  const BedroomRanger({Key? key}) : super(key: key);
+  final Color colorPrimary;
+  const BedroomRanger({Key? key, required this.colorPrimary}) : super(key: key);
 
   @override
   State<BedroomRanger> createState() => _BedroomRangerState();
@@ -53,7 +54,7 @@ class _BedroomRangerState extends State<BedroomRanger> {
                   inactiveTrackBarHeight: 5,
                   activeTrackBar: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: MyColors.colorPrimary,
+                    color: widget.colorPrimary,
                   ),
                   inactiveTrackBar: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -63,7 +64,7 @@ class _BedroomRangerState extends State<BedroomRanger> {
 
                 min: 0,
                 fontSize: 15,
-                textBackgroundColor: MyColors.colorPrimary,
+                textBackgroundColor: widget.colorPrimary,
                 onDragging: (handlerIndex, lowerValue, upperValue) {
                   this.lowerValue = lowerValue;
                   this.upperValue = upperValue;
