@@ -38,6 +38,7 @@ final androidConfig = FlutterBackgroundAndroidConfig(
   notificationIcon: AndroidResource(name: 'background_icon', defType: 'drawable'), // Default is ic_launcher from folder mipmap
 );
 
+GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: MyColors.generateMaterialColor(color),
@@ -90,7 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
   late SharedPreferences sharedPreferences;
 
   GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
-
   String fcmId = "";
   @override
   void initState() {
@@ -171,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //   debugPrint('notification payload: $payload');
     // }
     Navigator.push(
-      key.currentContext!,
+      navigatorKey.currentState!.context,
       MaterialPageRoute<void>(builder: (context) => FollowUpDetail(
         id: notificationResponse.id.toString(),
         colorPrimary:  Color(int.parse("0xff"+(sharedPreferences.getString("color")??"e6e6e6"))),
